@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MetroRoutesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MetroRoutesForm.Designer.cs">
+      <DependentUpon>MetroRoutesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransportSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MetroRoutesForm.resx">
+      <DependentUpon>MetroRoutesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TransportSelectionForm.resx">
       <DependentUpon>TransportSelectionForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace Ticket_Vendor_Machine
 {
-    public partial class TransportSelectionForm : Form
+    public partial class MetroRoutesForm : Form
     {
-        public TransportSelectionForm()
+        public MetroRoutesForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
