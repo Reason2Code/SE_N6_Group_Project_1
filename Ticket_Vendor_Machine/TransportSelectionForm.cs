@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ticket_Vendor_Machine
 {
-    public partial class Form1 : Form
+    public partial class TransportSelectionForm : Form
     {
-        public Form1()
+        public TransportSelectionForm()
         {
             InitializeComponent();
         }
