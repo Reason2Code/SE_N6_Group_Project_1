@@ -51,17 +51,13 @@ namespace Ticket_Vendor_Machine
                 // Use the plural class properties
                 if ( (r.RouteType == "MRT") && (routeType == "metro") )
                 {
-                    AddRoute(r.RouteID, r.RouteCode, r.RouteName, r.OriginStation,
-                         r.DestinationStation, r.EstimatedDuration,
-                         r.TicketPrice.ToString("N0"), theme);
+                    AddRoute(r, theme);
 
                     continue;
                 }
                 else if ( (r.RouteType == "BUS") && (routeType == "bus") )
                 {
-                    AddRoute(r.RouteID, r.RouteCode, r.RouteName, r.OriginStation,
-                         r.DestinationStation, r.EstimatedDuration,
-                         r.TicketPrice.ToString("N0"), theme);
+                    AddRoute(r, theme);
                 }
             }
         }
@@ -89,52 +85,66 @@ namespace Ticket_Vendor_Machine
         }
 
         Button selectedRouteButton = null;
-        string selectedRouteCode = "";
-        void AddRoute(int routeID, string code, string name, string origin, string destination, string duration, string price, Color themeColor)
+        public Routes selectedRoute { get; set; }
+        void AddRoute(Routes routeData, Color themeColor)
         {
             Button btn = new Button();
 
-            // FR1.2 Formatting: Code & Name | Origin -> Destination | Duration | Price
-            btn.Text = $"{code}: {name}\n" +
-                       $"{origin} → {destination}\n" +
-                       $"{duration} | {price} VND";
+            // Formatting using the object properties
+            btn.Text = $"{routeData.RouteCode}: {routeData.RouteName}\n" +
+                       $"{routeData.OriginStation} → {routeData.DestinationStation}\n" +
+                       $"{routeData.TicketPrice:N0} VND";
 
-            // Increase height to 120-140 to fit 3 lines of bold text comfortably
+            btn.Tag = routeData; // THIS IS KEY: We hide the whole DB row inside the button
+
+            // Styling
             btn.Height = 130;
-            btn.Font = new Font("Segoe UI", 11, FontStyle.Bold); // Slightly smaller but Bold
-            btn.TextAlign = ContentAlignment.MiddleCenter;
-
-            // Kiosk Styling
             btn.Dock = DockStyle.Fill;
-            btn.FlatStyle = FlatStyle.Flat;
             btn.BackColor = Color.White;
-            btn.Margin = new Padding(10, 5, 25, 5);
-            btn.Tag = themeColor; // Store for selection logic
-            btn.FlatAppearance.BorderSize = 2;
+            btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderColor = themeColor;
+            btn.FlatAppearance.BorderSize = 2;
+            btn.Font = new Font("Segoe UI", 11, FontStyle.Bold);
 
-            // Selection Logic (Single Selection)
+            // Selection Logic
             btn.Click += (s, e) => {
+                // Reset previous selection
                 if (selectedRouteButton != null)
                 {
                     selectedRouteButton.BackColor = Color.White;
                     selectedRouteButton.ForeColor = Color.Black;
                 }
+
+                // Highlight new selection
                 selectedRouteButton = btn;
-                selectedRouteCode = code;
-                btn.BackColor = (Color)btn.Tag;
+                this.selectedRoute = (Routes)btn.Tag; // Record the selection
+
+                btn.BackColor = themeColor;
                 btn.ForeColor = Color.White;
             };
 
-            // TableLayout Logic
             routesList.RowCount++;
-            routesList.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F)); // Row slightly taller than button
+            routesList.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F));
             routesList.Controls.Add(btn, 0, routesList.RowCount - 1);
         }
 
         private void RoutesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void proceedButton_Click(object sender, EventArgs e)
+        {
+            if (selectedRoute == null)
+            {
+                MessageBox.Show("Please select a route first!");
+                return;
+            }
+
+            // Open Payment Form and pass the selected data
+            PaymentForm payment = new PaymentForm(selectedRoute, this);
+            payment.Show();
+            this.Hide();
         }
     }
 }

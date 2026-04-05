@@ -56,11 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RoutesForm - Copy.cs">
+    <Compile Include="TicketForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RoutesForm - Copy.Designer.cs">
-      <DependentUpon>RoutesForm - Copy.cs</DependentUpon>
+    <Compile Include="TicketForm.Designer.cs">
+      <DependentUpon>TicketForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RoutesForm.cs">
       <SubType>Form</SubType>
@@ -76,8 +82,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="RoutesForm - Copy.resx">
-      <DependentUpon>RoutesForm - Copy.cs</DependentUpon>
+    <EmbeddedResource Include="TicketForm.resx">
+      <DependentUpon>TicketForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RoutesForm.resx">
       <DependentUpon>RoutesForm.cs</DependentUpon>
