@@ -19,12 +19,18 @@ namespace Ticket_Vendor_Machine
 
         private void button1_Click(object sender, EventArgs e)
         {
+            RoutesForm routes = new RoutesForm("metro", this);
 
+            routes.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            RoutesForm routes = new RoutesForm("bus", this);
 
+            routes.Show();
+            this.Hide();
         }
     }
 }
