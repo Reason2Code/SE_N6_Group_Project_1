@@ -59,7 +59,7 @@
             // routesList
             // 
             this.routesList.AutoScroll = true;
-            this.routesList.ColumnCount = 1;
+            this.routesList.ColumnCount = 2;
             this.routesList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.routesList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.routesList.Location = new System.Drawing.Point(14, 67);

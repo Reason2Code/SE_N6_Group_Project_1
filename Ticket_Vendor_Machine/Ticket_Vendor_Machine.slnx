@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="../BLL/BLL.csproj" Id="d3372492-9e69-4aae-a51a-bd571a8944d5" />
+  <Project Path="../DAL/DAL.csproj" Id="f7f4bb0f-adba-4b18-9903-714bc1991e28" />
   <Project Path="Ticket_Vendor_Machine.csproj" Id="654823a5-8891-4799-9496-b97012e84d98" />
 </Solution>
